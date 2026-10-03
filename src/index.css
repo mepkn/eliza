@@ -1,4 +1,65 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-sans: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --font-heading: var(--font-sans);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+    --radius: 0.25rem;
+    --background: #0b0f0b;
+    --foreground: #33ff66;
+    --card: #0b0f0b;
+    --card-foreground: #33ff66;
+    --popover: #0b0f0b;
+    --popover-foreground: #33ff66;
+    --primary: #33ff66;
+    --primary-foreground: #0b0f0b;
+    --secondary: #13261a;
+    --secondary-foreground: #33ff66;
+    --muted: #13261a;
+    --muted-foreground: #1f9e40;
+    --accent: #ffb000;
+    --accent-foreground: #0b0f0b;
+    --destructive: #ff5555;
+    --border: color-mix(in oklab, #1f9e40 40%, transparent);
+    --input: color-mix(in oklab, #1f9e40 60%, transparent);
+    --ring: #ffb000;
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground font-sans; }
+}
 
 @theme {
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
@@ -9,13 +70,7 @@
 }
 
 html, body, #root { height: 100%; }
-body {
-  margin: 0;
-  background: var(--color-screen);
-  color: var(--color-term);
-  font-family: var(--font-mono);
-  font-size: 18px;
-}
+body { margin: 0; font-size: 18px; }
 
 @keyframes blink { 50% { opacity: 0; } }
 .cursor { animation: blink 1s steps(1) infinite; }

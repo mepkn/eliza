@@ -14,7 +14,7 @@ Live: https://eliza.pknspace.com
 
 ## Stack
 
-React 19 · TypeScript · Vite · Tailwind CSS v4 · Framer Motion · elizabot · Vitest. No backend.
+React 19 · TypeScript · Vite · Tailwind CSS v4 · shadcn/ui · Framer Motion · elizabot · Vitest. No backend.
 
 ## Development
 
