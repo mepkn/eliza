@@ -18,6 +18,8 @@ React 19 · TypeScript · Vite · Tailwind CSS v4 · shadcn/ui · Framer Motion 
 
 ## Development
 
+Requires Node 22.18+ (`.nvmrc` pins 22).
+
 ```bash
 npm install
 npm run dev
@@ -32,7 +34,7 @@ npm run dev
 | `npm run typecheck` | TypeScript check (`tsc -b`) |
 | `npm run preview` | Serve the built `dist/` locally |
 | `npm run lint` | ESLint |
-| `npm test` | Unit tests (Vitest) |
+| `npm test` | Unit tests (Vitest): deterministic replies, extra keywords, goodbye |
 | `npm run check` | Typecheck, lint and tests |
 | `npm run deploy` | Checks, builds and uploads to the VPS |
 | `npm run deploy:dry` | Same, but only previews the upload |
@@ -58,3 +60,4 @@ Caddy serves it directly (no restart needed).
 - ELIZA matches keywords in what you type, picks a decomposition rule, and reassembles
   your own words into a reply ("I feel sad" → "Do you often feel sad?").
 - `eliza.test.ts` runs the bot in non-random mode so replies are deterministic.
+- **UI.** shadcn/ui components live in `src/components/ui/` (vendored, added with `npx shadcn add`, not linted). The theme tokens in `src/index.css` make them green-on-black with an amber input, like a terminal.
