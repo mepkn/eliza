@@ -1,12 +1,20 @@
-import { useEffect, useRef, useState } from 'react'
-import ChatWindow from './components/ChatWindow.jsx'
-import { createEliza } from './eliza/eliza.js'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
+import ChatWindow from './components/ChatWindow.tsx'
+import { createEliza, type Eliza } from './eliza/eliza.ts'
+
+export type ChatMessage = { id: number; from: 'eliza' | 'user'; text: string; typewriter: boolean }
+type Session = { eliza: Eliza; messages: ChatMessage[] }
 
 let nextId = 0
-const msg = (from, text, typewriter = false) => ({ id: nextId++, from, text, typewriter })
+const msg = (from: ChatMessage['from'], text: string, typewriter = false): ChatMessage => ({
+  id: nextId++,
+  from,
+  text,
+  typewriter,
+})
 const thinkDelay = () => 600 + Math.random() * 600
 
-function freshSession() {
+function freshSession(): Session {
   const eliza = createEliza()
   return { eliza, messages: [msg('eliza', eliza.initial(), true)] }
 }
@@ -17,8 +25,8 @@ export default function App() {
   const [thinking, setThinking] = useState(false)
   const [typing, setTyping] = useState(true)
   const [ended, setEnded] = useState(false)
-  const inputRef = useRef(null)
-  const timer = useRef(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined)
 
   const busy = thinking || typing
 
@@ -27,7 +35,7 @@ export default function App() {
     if (!busy && !ended) inputRef.current?.focus()
   }, [busy, ended])
 
-  function send(e) {
+  function send(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const text = input.trim()
     if (!text || busy || ended) return

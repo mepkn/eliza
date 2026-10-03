@@ -14,7 +14,7 @@ Live: https://eliza.pknspace.com
 
 ## Stack
 
-React 19 · Vite · Tailwind CSS v4 · Framer Motion · elizabot · Vitest. No backend.
+React 19 · TypeScript · Vite · Tailwind CSS v4 · Framer Motion · elizabot · Vitest. No backend.
 
 ## Development
 
@@ -28,11 +28,12 @@ npm run dev
 | Command | What it does |
 |---|---|
 | `npm run dev` | Dev server at http://localhost:5173 |
-| `npm run build` | Production build into `dist/` |
+| `npm run build` | Typecheck and production build into `dist/` |
+| `npm run typecheck` | TypeScript check (`tsc -b`) |
 | `npm run preview` | Serve the built `dist/` locally |
 | `npm run lint` | ESLint |
 | `npm test` | Unit tests (Vitest) |
-| `npm run check` | Lint and tests |
+| `npm run check` | Typecheck, lint and tests |
 | `npm run deploy` | Checks, builds and uploads to the VPS |
 | `npm run deploy:dry` | Same, but only previews the upload |
 
@@ -51,9 +52,9 @@ Caddy serves it directly (no restart needed).
 
 ## How it works
 
-- `src/eliza/eliza.js` wraps `elizabot` without changing its engine. Before the first
-  bot is created it merges the extra keywords and synonyms from `extraKeywords.js` into
+- `src/eliza/eliza.ts` wraps `elizabot` without changing its engine. Before the first
+  bot is created it merges the extra keywords and synonyms from `extraKeywords.ts` into
   elizabot's data, because elizabot parses that data only once.
 - ELIZA matches keywords in what you type, picks a decomposition rule, and reassembles
   your own words into a reply ("I feel sad" → "Do you often feel sad?").
-- `eliza.test.js` runs the bot in non-random mode so replies are deterministic.
+- `eliza.test.ts` runs the bot in non-random mode so replies are deterministic.

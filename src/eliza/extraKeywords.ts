@@ -7,11 +7,13 @@
 //
 // Deliberately NO Hindi/Hinglish understanding and NO factual answers.
 
-export const extraSynonyms = {
+import type { Keyword } from 'elizabot/elizadata.js'
+
+export const extraSynonyms: Record<string, string[]> = {
   family: ['mummy', 'papa', 'maa'],
 }
 
-export const extraKeywords = [
+export const extraKeywords: Keyword[] = [
   ['exam', 3, [
     ['*', [
       'Why do exams worry you ?',

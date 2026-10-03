@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { createEliza } from './eliza.js'
+import { createEliza } from './eliza.ts'
 
 // Run each check several times: ELIZA picks replies at random.
-const replies = (text, n = 10) =>
+const replies = (text: string, n = 10) =>
   Array.from({ length: n }, () => createEliza().reply(text))
 
 describe('ELIZA wrapper', () => {

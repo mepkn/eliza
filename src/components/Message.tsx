@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
+import type { ChatMessage } from '../App.tsx'
+
 const CHAR_MS = 28
 
+type Props = Omit<ChatMessage, 'id'> & { onTyped?: () => void }
+
 // One chat line. ELIZA's lines type out character by character.
-export default function Message({ from, text, typewriter, onTyped }) {
+export default function Message({ from, text, typewriter, onTyped }: Props) {
   const isEliza = from === 'eliza'
   const [shown, setShown] = useState(typewriter ? 0 : text.length)
 

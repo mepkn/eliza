@@ -1,8 +1,11 @@
 import { useEffect, useRef } from 'react'
-import Message from './Message.jsx'
+import Message from './Message.tsx'
+import type { ChatMessage } from '../App.tsx'
 
-export default function ChatWindow({ messages, thinking, onTyped }) {
-  const endRef = useRef(null)
+type Props = { messages: ChatMessage[]; thinking: boolean; onTyped: () => void }
+
+export default function ChatWindow({ messages, thinking, onTyped }: Props) {
+  const endRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
