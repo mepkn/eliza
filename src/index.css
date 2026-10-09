@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-    --font-sans: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --font-sans: "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
     --font-heading: var(--font-sans);
     --color-ring: var(--ring);
     --color-input: var(--input);
@@ -62,7 +62,7 @@
 }
 
 @theme {
-  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-mono: "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
   --color-term: #33ff66;
   --color-term-dim: #1f9e40;
   --color-amber: #ffb000;
